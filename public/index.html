@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I am a Node.js Server</title>
+  <style type="text/css">
+    input { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Hello World!</h1>
+
+  <form action="/" method="get">
+    <div>
+      <input type="text" name="username" placeholder="Username">
+    </div>
+    <div>
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <input type="submit">
+  </form>
+
+  <h2>Request:</h2>
+  <pre>{{ req }}</pre>
+  <h2>Response:</h2>
+  <pre>{{ res }}</pre>
+</body>
+</html>
