@@ -11,6 +11,7 @@ const port = 8080;
 
 const server = http.createServer((req, res) => {
     fs.readFile("./public/index.html", "utf8", (err, data) => {
+        
         if (err) {
             res.writeHead(404);
             res.end("Soz, that file could not be found.");
@@ -19,6 +20,23 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, {
             "content-Type" : "text/html"
             });
+            
+            let reqForHTML = {};
+            reqForHTML.url = req.url;
+            reqForHTML.method = req.method;
+            reqForHTML.httpVersion = req.httpVersion;
+            reqForHTML.headers = req.headers;
+            reqForHTML = JSON.stringify(reqForHTML, null, 2);
+            
+            let resForHTML = {};
+            resForHTML.statusCode = res.statusCode;
+            resForHTML.statusMessage = res.statusMessage;
+            resForHTML._header = res._header;
+            resForHTML = JSON.stringify(resForHTML, null, 2);
+            
+            data = data.replace("{{req}}", reqForHTML);
+            data = data.replace("{{res}}", resForHTML);
+            
             res.end(data);
         }
     });
