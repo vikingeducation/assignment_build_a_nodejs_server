@@ -10,6 +10,8 @@ const port = 8080;
 
 
 const server = http.createServer((req, res) => {
+    
+    
     fs.readFile("./public/index.html", "utf8", (err, data) => {
         
         if (err) {
@@ -20,7 +22,6 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, {
             "content-Type" : "text/html"
             });
-            
             let reqForHTML = {};
             reqForHTML.url = req.url;
             reqForHTML.method = req.method;
@@ -32,7 +33,9 @@ const server = http.createServer((req, res) => {
             resForHTML.statusCode = res.statusCode;
             resForHTML.statusMessage = res.statusMessage;
             resForHTML._header = res._header;
+            resForHTML["Query submitted by login form"] = require("url").parse(req.url, true).query;
             resForHTML = JSON.stringify(resForHTML, null, 2);
+            
             
             data = data.replace("{{req}}", reqForHTML);
             data = data.replace("{{res}}", resForHTML);
@@ -47,3 +50,25 @@ const server = http.createServer((req, res) => {
 server.listen(port, path, function() {
     console.log(`Server listening at ${path}:${port}. URL is https://vikingcodeschoolworkspace-rttomlinson.c9users.io/`);
 });
+
+
+
+/*emitter.on("close", (data) => {
+    if buffer {
+        buffer.toString();
+    }
+})
+
+/*req.on("end", (data) => {
+    if buffer {
+        buffer.toString();
+    }
+})
+
+req.on("data", (data) => {
+    get a piece of the buffer
+});
+
+
+
+*/
