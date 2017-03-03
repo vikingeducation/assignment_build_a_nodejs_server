@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <h1>Your server is working!</h1>
+        </header>
+        <main>
+            <h2>Request:</h2>
+            <pre>{{req}}</pre>
+            
+            <h2>Response:</h2>
+            <pre>{{res}}</pre>
+            
+            <form id="login" name="login" action="/" method="get">
+                <div>
+                    <label for="username" form="login">Username</label>
+                    <input type="text" form="login" id="username" name="username" placeholder="Username">
+                </div>
+                <div>
+                    <label for="password" form="login">Password</label>
+                    <input type="password" form="login" id="password" name="password" placeholder="Password">
+                </div>
+                <div>
+                    <button type="submit" form="login">Submit</button>
+                </div>
+            </form>
+            
+            <form id="update" name="udpate" action="/" method="post">
+                <div>
+                    <label for="hit-target" form="update">Hit Target</label>
+                    <input type="text" form="update" id="hit-target" name="hit-target" placeholder="Name">
+                </div>
+                <div>
+                    <label for="amount" form="update">Bounty</label>
+                    <input type="text" form="update" id="amount" name="amount" placeholder="Cash">
+                </div>
+                <div>
+                    <button type="submit" form="update">Submit</button>
+                </div>
+            </form>
+            
+        </main>
+        <footer>
+        </footer>
+    </body>
+    
+    
+</html>
