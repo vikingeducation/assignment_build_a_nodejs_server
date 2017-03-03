@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
             resForHTML.statusCode = res.statusCode;
             resForHTML.statusMessage = res.statusMessage;
             resForHTML._header = res._header;
-            resForHTML["Query submitted by login form"] = require("url").parse(req.url, true).query;
+            resForHTML["Query submitted by login form"] = require("url").parse(req.url, true).query; //Can also use the queryString module's .parse method
             resForHTML = JSON.stringify(resForHTML, null, 2);
             
             
