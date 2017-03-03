@@ -11,7 +11,21 @@ const port = 8080;
 
 const server = http.createServer((req, res) => {
     
-    
+    if (req.method == 'POST') {
+        var p = new Promise(function(resolve, reject) {
+            let body = [];
+            req.on("data", function (chunk) {
+                body.push(chunk);
+            }).on("end", function() {
+                body = Buffer.concat(body).toString();
+                resolve(body);
+            }).on("error", function (error) {
+                reject(error.stack);
+            });
+        });
+    }
+    let reqForHTML = {};
+    let resForHTML = {};
     fs.readFile("./public/index.html", "utf8", (err, data) => {
         
         if (err) {
@@ -22,25 +36,37 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, {
             "content-Type" : "text/html"
             });
-            let reqForHTML = {};
             reqForHTML.url = req.url;
             reqForHTML.method = req.method;
             reqForHTML.httpVersion = req.httpVersion;
             reqForHTML.headers = req.headers;
-            reqForHTML = JSON.stringify(reqForHTML, null, 2);
             
-            let resForHTML = {};
             resForHTML.statusCode = res.statusCode;
             resForHTML.statusMessage = res.statusMessage;
             resForHTML._header = res._header;
             resForHTML["Query submitted by login form"] = require("url").parse(req.url, true).query; //Can also use the queryString module's .parse method
-            resForHTML = JSON.stringify(resForHTML, null, 2);
             
             
-            data = data.replace("{{req}}", reqForHTML);
-            data = data.replace("{{res}}", resForHTML);
+            if (req.method == "GET") {
+                reqForHTML = JSON.stringify(reqForHTML, null, 2);
+                resForHTML = JSON.stringify(resForHTML, null, 2);
+                data = data.replace("{{req}}", reqForHTML);
+                data = data.replace("{{res}}", resForHTML);
+                res.end(data);
+            } else if (req.method == "POST") {
+                p.then(function onFulfilled(body) {
+                    reqForHTML.body = body;
+                    reqForHTML = JSON.stringify(reqForHTML, null, 2);
+                    resForHTML = JSON.stringify(resForHTML, null, 2);
+                    data = data.replace("{{req}}", reqForHTML);
+                    data = data.replace("{{res}}", resForHTML);
+                    res.end(data);
+                });
+            }
+
+
             
-            res.end(data);
+            
         }
     });
 
