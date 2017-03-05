@@ -1,0 +1,6 @@
+{
+  "url": "req.url",
+  "method": "req.method",
+  "httpVersion": "req.httpVersion",
+  "headers": "req.headers"
+}
