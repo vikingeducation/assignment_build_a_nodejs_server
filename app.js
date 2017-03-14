@@ -29,15 +29,10 @@ var server = http.createServer(function(req, res) {
       }
 
       var stringifiedShallowReq = JSON.stringify(shallowReq, null, 2);
-      var stringifiedShallowRes = JSON.stringify(shallowRes, null, 2);
-
-      var updatedData = data.replace(/{{ req }}/, stringifiedShallowReq)
+          stringifiedShallowRes = JSON.stringify(shallowRes, null, 2);
+          updatedData = data.replace(/{{ req }}/, stringifiedShallowReq)
         .replace(/{{ res }}/, stringifiedShallowRes);
 
-
-      //use String.prototype.replace to swap out html
-
-      //console.log(data);
       res.end(updatedData);
 
     }
