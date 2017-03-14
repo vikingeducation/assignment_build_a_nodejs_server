@@ -10,10 +10,36 @@ var server = http.createServer(function(req, res) {
       res.writeHead(404);
       res.end('404 Not Found');
     } else {
+      //Successful load
       res.writeHead(200, {
         'Content-Type': "text/html"
       });
-      res.end(data);
+
+      var shallowReq = {
+        url: req.url,
+        method: req.method,
+        httpVersion: req.httpVersion,
+        headers: req.headers
+      }
+
+      var shallowRes = {
+        statusMessage: res.statusMessage,
+        statusCode: res.statusCode,
+        _header: res._header
+      }
+
+      var stringifiedShallowReq = JSON.stringify(shallowReq, null, 2);
+      var stringifiedShallowRes = JSON.stringify(shallowRes, null, 2);
+
+      var updatedData = data.replace(/{{ req }}/, stringifiedShallowReq)
+        .replace(/{{ res }}/, stringifiedShallowRes);
+
+
+      //use String.prototype.replace to swap out html
+
+      //console.log(data);
+      res.end(updatedData);
+
     }
   });
 });
