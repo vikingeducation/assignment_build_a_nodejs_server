@@ -5,12 +5,20 @@
 	</head>
 	<body>
 		<h1>Server working correctly!</h1>
-		
+
 		<h2>Request:</h2>
 		<pre>{{ req }}</pre>
 
 		<h2>Response:</h2>
 		<pre>{{ res }}</pre>
+
+		<form action="http://localhost:3000" method="GET">
+			<label for="username">Username</label>
+			<input type="text" name="username" placeholder="type username"><br>
+			<label for="password">Password</label>
+			<input type="password" name="password" placeholder="type password">
+			<input type="submit" value = "Submit me!">			
+		</form>
 	</body>
 
 </html>
