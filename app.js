@@ -1,10 +1,8 @@
 var http = require('http');
 var fs = require('fs');
 
-
 var port = 3000;
 var host = 'localhost';
-
 
 var server = http.createServer(function(req, res) {
   fs.readFile('./public/index.html', 'utf8', function(err, data) {
