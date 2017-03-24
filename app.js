@@ -15,16 +15,20 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, {
         'Content-Type': 'text/html'
       });
-      var my_req = {};
-      var req_array = ["url", "method", "httpVersion", "headers"];
-      req_array.forEach(function(key) {
-        my_req[key] = req[key];
-      });
-      var my_res = {};
-      var res_array = ["statusMessage", "statusCode", "_header"];
-      res_array.forEach(function(key) {
-        my_res[key] = res[key];
-      });
+      let { url, method, httpVersion, headers } = req;
+      let my_req = { url: url, method: method, httpVersion: httpVersion, headers: headers };
+      // var my_req = {};
+      // var req_array = ["url", "method", "httpVersion", "headers"];
+      // req_array.forEach(function(key) {
+      //   my_req[key] = req[key];
+      // });
+      let { statusMessage, statusCode, _header } = res;
+      let my_res = { statusMessage: statusMessage, statusCode: statusCode, _header: _header};
+      // var my_res = {};
+      // var res_array = ["statusMessage", "statusCode", "_header"];
+      // res_array.forEach(function(key) {
+      //   my_res[key] = res[key];
+      // });
       res.end(data.replace("{{ req }}", JSON.stringify(my_req, null, 2)).replace("{{ res }}", JSON.stringify(my_res, null, 2)));
     }
   });
