@@ -20,13 +20,13 @@ var server = http.createServer(function(req, res){
 				statusCode: res.statusCode,
 				_header: res._header
 			}, null, 2);
-			console.log(reqObj);
 			res.writeHead(200, {
 				"Content-type": "text/html"
 			});
 			data = data.replace("res", resObj);
 			data = data.replace("req", reqObj);
 			res.end(data);
+			console.log(req.url);
 		}
 	})
 });
