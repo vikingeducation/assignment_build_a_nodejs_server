@@ -13,7 +13,32 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, {
         "Content-Type": "text/html"
       });
-      res.end(data);
+
+      if (req.method === "GET") {
+        requestResult = {
+          url: req.url,
+          method: req.method,
+          httpVersion: req.httpVersion,
+          headers: req.headers
+        };
+        responseResult = {
+          statusMessage: res.statusMessage,
+          statusCode: res.statusCode,
+          _header: res._header
+        };
+        data = data.replace('{{ req }}', JSON.stringify(requestResult, null, 2));
+        data = data.replace('{{ res }}', JSON.stringify(responseResult, null, 2));
+        res.end(data);
+      } else if (req.method === "POST") {
+        var query = '';
+        req.on('data', function(queryString) {
+          query += queryString;
+          // console.log(query);
+          data = data.replace('{{ req }}', '');
+          data = data.replace('{{ res }}', 'Your query string is ' + query);
+          res.end(data);
+        });
+      }
     }
   });
 });
