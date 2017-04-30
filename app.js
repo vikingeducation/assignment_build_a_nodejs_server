@@ -13,7 +13,20 @@ const server = http.createServer(function(req, res) {
       res.writeHead(200, {
         "Content_Type": "text/html"
       });
-      res.end(data);
+      var requestData = {
+        "url": req.url,
+        "method": req.method,
+        "httpVersion": req.httpVersion,
+        "headers": req.headers
+      }
+      var responseData = {
+        "statusMessage": res.statusMessage,
+        "statusCode": res.statusCode,
+        "_header": res._header
+      }
+      res.end(data
+        .replace("req", JSON.stringify(requestData, null, 2))
+        .replace("res", JSON.stringify(responseData, null, 2)));
     }
   });
 });
