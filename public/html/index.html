@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A Simple Node Server</title>
+</head>
+<body>
+  <h1>Hello, Node.js server!</h1>
+  <form method="POST" action="index.html">
+  <label for="first_name">First Name:</label>
+  <input name="first_name" type="text" />
+  <label for="last_name">Last Name:</label>
+  <input name="last_name" type="text" />
+  <br />
+  <button type="submit">Submit</button>
+  </form>
+  <h1>Request:</h1>
+  <pre>{{ req }}</pre>
+  <h1>Response:</h1>
+  <pre>{{ res }}</pre>
+</body>
+</html>
