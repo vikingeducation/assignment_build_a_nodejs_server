@@ -15,6 +15,20 @@ let server = HTTP.createServer(function(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/html'
       });
+
+      let reqObj = {
+        url: req.url,
+        method: req.method,
+        httpVersion: req.httpVersion,
+        headers: req.headers
+      };
+      let resObj = {
+        statusMessage: res.statusMessage,
+        statusCode: res.statusCode,
+        _header: res._header
+      };
+      data = data.replace('{{ req }}', JSON.stringify(reqObj, null, 2));
+      data = data.replace('{{ res }}', JSON.stringify(resObj, null, 2));
       res.end(data);
     }
   })
