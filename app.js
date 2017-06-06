@@ -14,7 +14,8 @@ const server = http.createServer(function(req, res){
       res.statusCode = 200;
       res.setHeader("content-type", "text/html");
       var details = {
-        url: req.headers["host"],
+        url: req.url,
+        host: req.headers["host"],
         method: req.method,
         httpVersion: req.httpVersion,
         headers: req.headers
