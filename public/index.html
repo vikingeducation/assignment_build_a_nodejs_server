@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Server</title>
+</head>
+<body>
+  <header>
+    <h1>My Server Request:</h1>
+    <pre>
+      {{ req }}
+    </pre>
+    <h1>My Server Responce:</h1>
+    <pre>
+      {{ res }}
+    </pre>
+  </header>
+  <main>
+    <section>
+      <div>
+        <form action="GET">
+          <input type="text"/>
+          <input type="password" />
+          <input type="submit" />
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
