@@ -14,7 +14,8 @@ const server = http.createServer((req, res) => {
       url: req.url,
       method: req.method,
       httpVersion: req.httpVersion,
-      headers: req.headers
+      headers: req.headers,
+      body: req.body
     };
 
     const resData = {
@@ -24,7 +25,7 @@ const server = http.createServer((req, res) => {
     }
     data = data.replace('{{ req }}', JSON.stringify(reqData, null, 2));
     data = data.replace('{{ res }}', JSON.stringify(resData, null, 2));
-    console.log(data);
+    // console.log(data);
     res.end(data);
   })
 
