@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
+
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hello Node.js Server!</title>
+  </head>
+  <body>
+    <h1 id="demo">Hello Node.js Server!</h1>
+
+    <h2>Request:</h2>
+    <pre id="req">{{ req }}</pre>
+
+    <h2>Response:</h2>
+    <pre id="res">{{ res }}</pre>
+
+<button type="button" onclick="myFunction()">Click Me!</button>
+<form >
+            <input type="text" placeholder="username"/>
+            <input type="password" placeholder="password"/>
+            <button>login</button>
+
+          </form>
+
+  </body>
+</html>
