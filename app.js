@@ -21,19 +21,23 @@ const server = http.createServer((req, res) => {
 				headers: req.headers
 			}
 
-			let jsonReqObject = JSON.stringify(reqObject, null, 2);
-
-			data = data.replace(/{{ req }}/g, jsonReqObject); 
-
 			let resObj = {
 				statusMessage: res.statusMessage,
 				statusCode: res.statusCode,
 				header: res._header
 			}
 
+			let jsonReqObject = JSON.stringify(reqObject, null, 2);
 			let jsonResObj = JSON.stringify(resObj, null, 2);
 
-			data = data.replace(/{{ res }}/g, jsonResObj); 
+			let mapObj = {
+				'{{ req }}': jsonReqObject,
+				'{{ res }}': jsonResObj
+			}
+
+			data = data.replace(/{{ req }}|{{ res }}/g, (matched) => {
+				return mapObj[matched];
+			});
 
 			res.end(data);
 		}
