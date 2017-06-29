@@ -13,6 +13,28 @@ const server = http.createServer((req, res) => {
 			res.writeHead(200, {
 				'Content-Type': 'text/html'
 			});
+
+			let reqObject = {
+				url: req.url,
+				method: req.method,
+				httpVersion: req.httpVersion,
+				headers: req.headers
+			}
+
+			let jsonReqObject = JSON.stringify(reqObject, null, 2);
+
+			data = data.replace(/{{ req }}/g, jsonReqObject); 
+
+			let resObj = {
+				statusMessage: res.statusMessage,
+				statusCode: res.statusCode,
+				header: res._header
+			}
+
+			let jsonResObj = JSON.stringify(resObj, null, 2);
+
+			data = data.replace(/{{ res }}/g, jsonResObj); 
+
 			res.end(data);
 		}
 	});
