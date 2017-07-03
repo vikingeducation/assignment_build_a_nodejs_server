@@ -1,5 +1,6 @@
 'use strict';
 
+const qs = require('querystring');
 const fs = require('fs');
 const http = require('http');
 const port = 8000;
@@ -35,12 +36,41 @@ function returnFile(error, data, request, response) {
     data = data.replace('{{ request }}', strRequest);
     data = data.replace('{{ response }}', strResponse);
 
-    // return!
-    response.writeHead(200, {
-      'Content-Type': 'text/html'
-    });
-    response.end(data);
+    if (request.method === 'POST') {
+      // let's grab that posted data!
+      let postData = ''
+      request.on('data', function(data) {
+        postData += data
+      });
+
+      // no more data
+      request.on('end', function() {
+        // turn our stream into something usable
+        postData = qs.parse(postData);
+        let strData = JSON.stringify(postData, null, 2);
+
+        // insert it into the page
+        data = data.replace('{{ post }}', strData);
+
+        // return
+        returnResponse(response, data);
+      });
+
+    } else {
+      // no post data, still gotta return though
+      returnResponse(response, data);
+    }
+
   }
+}
+
+// actually return... finally..
+function returnResponse(response, data){
+  response.writeHead(200, {
+    'Content-Type': 'text/html'
+  });
+
+  response.end(data);
 }
 
 
