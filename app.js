@@ -11,10 +11,26 @@ var server = http.createServer(function(req,res){
 			res.end("404 not found");
 		}
 		else{
+			req_obj = {
+				"url":req.url, 
+				"method":req.method,
+				"httpversion":req.httpVersion,
+				"headers":req.headers
+				}
+
+			res_obj = {
+				"statusMessage": res.statusMessage,
+				"statusCode": res.statusCode,
+				"header": res._header
+			}
+
 			res.writeHead(200, {
 				"Content-Type": "text/html"
 			});
-			res.end(data);
+			res.end(data.replace(
+				"{{ req }}", JSON.stringify(req_obj, null, 2)).
+			replace("{{ res }}", JSON.stringify(res_obj, null, 2)));
+
 		}
 	})
 });
