@@ -9,10 +9,17 @@ var port = 3000;
 
 // create a server
 var server = http.createServer(function(request, response){
-  response.writeHead(200, {
-    "Content-Type": "text/plain"
+  fs.readFile('./public/index.html', 'utf8', function(err, data){
+    if (err) {
+      response.writeHead(404);
+      response.end("Whoops! That page is nowhere to be found.");
+    } else {
+      response.writeHead(200, {
+        "Content-Type": "text/html"
+      });
+      response.end(data);
+    }
   });
-  response.end('hello world');
 });
 
 
