@@ -36,6 +36,10 @@ var server = http.createServer(function(request, response){
       var requestOutput = JSON.stringify( requestObj, null, 2 );
       var responseOutput = JSON.stringify( responseObj, null, 2 );
 
+      // reassign values of html variables to new data string content
+      data = data.replace( "request", requestOutput );
+      data = data.replace( "response", responseOutput );
+
       // pass the data to the view
       response.end(data);
     }
