@@ -4,6 +4,7 @@
   "description": "Building your first Node.js server and exploring the request and response objects",
   "main": "app.js",
   "dependencies": {
+    "fs": "0.0.1-security",
     "http": "^0.0.0"
   },
   "devDependencies": {},

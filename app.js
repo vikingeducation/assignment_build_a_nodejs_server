@@ -1,13 +1,22 @@
 var http = require("http");
+var fs = require("fs");
+var filePath = "./public/index.html";
 
 var port = 3000;
 var host = 'localhost';
 
 var server = http.createServer (function(req,res){
-  res.writeHead(200,{
-    "Content-Type": "text/html"
+  fs.readFile(filePath, 'utf8', function (err,data){
+    if (err){
+
+    }
+    else {
+      res.writeHead(200,{
+        "Content-Type": "text/html"
+      });
+      res.end(data);
+    }
   });
-  res.end("Hello World");
 });
 
 server.listen(port, host, function() {
