@@ -23,8 +23,8 @@ var replacePreWith = function (req, res, data){
   jsonStringReqValues = JSON.stringify(reqPropertiesValues, null, 2);
   jsonStringResValues = JSON.stringify(resPropertiesValues, null, 2);
 
-  data = data.replace(/req/i, jsonStringReqValues);
-  data = data.replace(/res/i, jsonStringResValues);
+  data = data.replace(/{{ req }}/i, jsonStringReqValues);
+  data = data.replace(/{{ res }}/i, jsonStringResValues);
 
   return data;
 };
