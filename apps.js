@@ -9,16 +9,36 @@ const server = http.createServer((req, res) => {
 			res.writeHead(404);
 			res.end('404 Not Found');
 		} else {
+
+			let myRequest = {};
+			["url", "method", "httpVersion", "header"].forEach((e) => {
+				// statements
+				myRequest[e] = req[e];
+			});
+
+			myRequest = JSON.stringify(myRequest, null, 2);
+
+
+			let myResponse = {};
+			["statusMessage", "statusCode", "._header"].forEach( (e) => {
+				// statements
+				myResponse[e] = res[e];
+			});
+
+			myResponse = JSON.stringify(myResponse, null, 2);
+
 			res.writeHead(200, {
 				"Content-Type": "text/html"
 			});
-			res.end(data)
+
+			data = data.replace("{{ req }}", myRequest);
+			data = data.replace("{{ res }}", myResponse);
+
+			res.end(data);
 		}
-	})
+	});
 });
 
 server.listen(port, () => {
 	console.log(`Server running at localhost:${port}/`);
 });
-
-module.exports = server;
