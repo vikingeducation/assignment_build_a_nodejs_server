@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
 		} else {
 
 			let myRequest = {};
-			["url", "method", "httpVersion", "header"].forEach((e) => {
+			["url", "method", "httpVersion", "headers"].forEach((e) => {
 				// statements
 				myRequest[e] = req[e];
 			});
@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
 
 
 			let myResponse = {};
-			["statusMessage", "statusCode", "._header"].forEach( (e) => {
+			["statusMessage", "statusCode", "_header"].forEach( (e) => {
 				// statements
 				myResponse[e] = res[e];
 			});
