@@ -13,7 +13,23 @@ var server = http.createServer(function(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/html'
       });
-      res.end(data);
+      var myReq = {
+        url: req.url,
+        method: req.method,
+        httpVersion: req.httpVersion,
+        headers: req.headers
+      };
+      var myRes = {
+        statusMessage: res.statusMessage,
+        statusCode: res.statusCode,
+        _header: res._header
+      };
+      myReq = JSON.stringify(myReq, null, 2);
+      myRes = JSON.stringify(myRes, null, 2);
+
+      res.end(data
+        .replace('{{ req }}', myReq)
+        .replace('{{ res }}', myRes));
     };
   });
 });
