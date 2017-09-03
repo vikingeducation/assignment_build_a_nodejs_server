@@ -5,10 +5,12 @@ var port = 3000;
 var host = 'localhost';
 
 var server = http.createServer(function(req, res) {
-  res.writeHead(200, {
-    "Content-Type": 'text/html'
+  fs.readFile('./public/index.html', 'utf8', function(err, data) {
+    res.writeHead(200, {
+      "Content-Type": 'text/html'
+    });
+    res.end(data);
   });
-  res.end("<h1>Hello World!</h1>");
 });
 
 server.listen(port, host, function() {
