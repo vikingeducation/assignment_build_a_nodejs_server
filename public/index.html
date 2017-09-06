@@ -2,14 +2,31 @@
 <html>
 	<head>
 	  <meta charset="UTF-8">
+	  <meta name="description" content="Building-A-Node-Server Assignment">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	  <title>NodeJS Server Test</title>
+
+	  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+      <script type="text/javascript" src="scripts.js"></script>
+      <link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
 	  <h1>Hello NodeJS Server!</h1>
+
 	  <h2>Request:</h2>
 	  <pre>{{ req }}</pre>
+
 	  <h2>Response:</h2>
 	  <pre>{{ res }}</pre>
+
+	  <section>
+      <h2>Simple Form</h2>
+      <form action="" method="get">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Submit">
+      </form>
+    </section>
 	</body>
 </html>

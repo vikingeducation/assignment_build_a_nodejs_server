@@ -15,7 +15,7 @@ let server = http.createServer(function(req, res) {
   fs.readFile("./public/index.html", "utf8", function(err, data){
   	if (err) {
   	  res.writeHead(404);
-  	  res.end("404 Not Found");
+  	  res.end("404: Page Not Found");
   	} else {
   	  res.writeHead(200, {"Content-Type": "text/html"});
 
