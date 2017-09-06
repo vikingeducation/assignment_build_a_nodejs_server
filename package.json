@@ -1,0 +1,19 @@
+{
+  "name": "assignment_build_a_nodejs_server",
+  "version": "1.0.0",
+  "description": "Building your first Node.js server and exploring the request and response objects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maddiereddy/assignment_build_a_nodejs_server.git"
+  },
+  "author": "Maddie Rajavasireddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maddiereddy/assignment_build_a_nodejs_server/issues"
+  },
+  "homepage": "https://github.com/maddiereddy/assignment_build_a_nodejs_server#readme"
+}
