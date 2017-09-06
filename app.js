@@ -18,6 +18,30 @@ let server = http.createServer(function(req, res) {
   	  res.end("404 Not Found");
   	} else {
   	  res.writeHead(200, {"Content-Type": "text/html"});
+
+  	  // capture incoming request data in an object
+      var reqObj = {
+        "req.url": req.url,
+        "req.method": req.method,
+        "req.httpVersion": req.httpVersion,
+        "req.headers": req.headers
+      }
+
+      // capture response data in an object
+      var resObj = {
+        "res.statusCode": res.statusCode,
+        "res.statusMessage": res.statusMessage,
+        "res._header": res._header
+      }
+
+      // output JSON objects info into strings
+      var reqOutput = JSON.stringify( reqObj, null, 2 );
+      var resOutput = JSON.stringify( resObj, null, 2 );
+
+      // reassign values of html variables to new data string content
+      data = data.replace( "req", reqOutput );
+      data = data.replace( "res", resOutput );
+
   	  res.end(data);
   	}
   });
