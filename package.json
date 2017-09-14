@@ -1,0 +1,25 @@
+{
+  "name": "assignment_build_a_nodejs_server",
+  "version": "1.0.0",
+  "description": "Building your first Node.js server and exploring the request and response objects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenlouie/assignment_build_a_nodejs_server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenlouie/assignment_build_a_nodejs_server/issues"
+  },
+  "homepage": "https://github.com/jenlouie/assignment_build_a_nodejs_server#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.0"
+  }
+}
