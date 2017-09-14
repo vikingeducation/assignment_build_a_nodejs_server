@@ -1,10 +1,25 @@
 var http = require('http');
+var fs = require('fs');
+
+var port = 3000;
+var host = 'localhost';
 
 var server = http.createServer(function(req,res){
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end('Hello Westeros and Essos!')
+    fs.readFile('.public/index.html', 'utf8', function(err, data){
+        
+        if (err) {
+            res.writeHead(404);
+            res.end("404 Not Found")
+        } else {
+            res.writeHead(200, {
+                "Content-Type": "text/html"});
+            res.end(data);
+        }
+    });    
+    
 });
 
 
-server.listen(3000, 'localhost');
-console.log('now working and listening to port 3000');
+server.listen(port, host, function(){
+    console.log('Listening at http://${ host }:{ port }');
+});
