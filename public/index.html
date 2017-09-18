@@ -9,11 +9,23 @@
 <body>
   <h1>This is a heading in My First Node.js Server</h1>
   <h2>Request:</h2>
-  <pre id="req">{{ req }}</pre>
+  <pre>{{ req }}</pre>
 
   <h2>Response:</h2>
-  <pre id="res">{{ res }}</pre>
+  <pre>{{ res }}</pre>
 
+  <form action="./app.js" method="get">
+    <label>
+      Username
+      <input id="name" value="username" type="text">
+    </label>
+    <br>
+    <label>Password
+      <input id="password" value="password" type="password">
+    </label>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
 </body>
 
 </html>
