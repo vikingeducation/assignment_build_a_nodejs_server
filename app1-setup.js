@@ -1,5 +1,5 @@
 //
-// Setup HTTP server
+// 1) Setting up the HTTP server
 //
 
 'use strict';
@@ -11,22 +11,9 @@ const hostname = 'localhost';
 const port = 3001;
 
 const server = http.createServer(function(req,res) {
-	fs.readFile(__dirname + '/public/index.html', 'utf8', function(err,data) {
-		if (err) {
-			res.writeHead(404);
-			res.end("File not found");
-		} else {
-			res.writeHead(200,
-				{'Content-Type': 'text/html'});
-			res.end(data);
-		};
-	});	
-
-/*
 	res.statusCode = 200;
 	res.setHeader('Content-Type', 'text/html');
 	res.end('Hello World!\n');
-*/	
 });
 
 server.listen(port, hostname, function () {
