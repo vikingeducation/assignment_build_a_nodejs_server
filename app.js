@@ -3,12 +3,6 @@
 const http = require('http'),
 	fs = require('fs');
 
-let JSONTestData = {
-	"poop": "woof",
-	"meow": "boo",
-	"ribbit": "ham sandwich"
-};
-
 let server = http.createServer((req, res) => {
 	fs.readFile('./public/index.html', 'utf8', function(err, data) {
 		if (err) {
@@ -18,7 +12,7 @@ let server = http.createServer((req, res) => {
 			res.writeHead(200, {
 				"Content-Type": "text/html"
 			});
-			
+
 			let reqArray = ["url", "method", "httpVersion", "headers"],
 				reqObjectArray = [],
 				resArray = ["statusMessage", "statusCode", "_header"],
