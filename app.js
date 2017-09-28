@@ -3,6 +3,12 @@
 const http = require('http'),
 	fs = require('fs');
 
+let JSONTestData = {
+	"poop": "woof",
+	"meow": "boo",
+	"ribbit": "ham sandwich"
+};
+
 let server = http.createServer((req, res) => {
 	fs.readFile('./public/index.html', 'utf8', function(err, data) {
 		if (err) {
@@ -12,7 +18,24 @@ let server = http.createServer((req, res) => {
 			res.writeHead(200, {
 				"Content-Type": "text/html"
 			});
-			res.end(data);
+			
+			let reqArray = ["url", "method", "httpVersion", "headers"],
+				reqObjectArray = [],
+				resArray = ["statusMessage", "statusCode", "_header"],
+				resObjectArray = [];
+
+			for (var item in reqArray) {
+				reqObjectArray.push({[reqArray[item]]: req[reqArray[item]]});
+			};
+
+			for (var item in resArray) {
+				resObjectArray.push({[resArray[item]]: res[resArray[item]]});
+			};
+
+			let newData = data.replace("{{ req }}", JSON.stringify(reqObjectArray));
+			newData = newData.replace("{{ res }}", JSON.stringify(resObjectArray));
+			
+			res.end(newData);
 		}
 	});
 });
