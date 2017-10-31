@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Node Server</title>
+  </head>
+
+<body>
+
+<h1>Hello (node) World!</h1>
+
+
+<h2>Request:</h2>
+<pre>{{ req }}</pre>
+
+<h2>Response:</h2>
+<pre>{{ res }}</pre>
+
+
+<form method="GET" action="./app.js">
+  <label>Username
+    <input type="text" name="username"/></label><br />
+
+  <label>Password<input type="password" name="password"/></label><br />
+
+  <input class='submit' type="submit"/>
+</form>
+
+</body></html>
