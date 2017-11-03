@@ -6,7 +6,6 @@ var fs = require('fs');
 var port = 3000;
 var host = 'localhost';
 
-
 var server = http.createServer(function(req, res) {
   /*console.log("Request: " + req.url + req.method + req.httpVersion + JSON.stringify(req.headers, null, 2) +res.statusMessage +
 res.statusCode +
