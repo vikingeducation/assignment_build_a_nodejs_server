@@ -22,6 +22,21 @@ var server = http.createServer((req, res)=>{
       res.writeHead(404);
       res.end("File Not Found");
     }else{
+      var reqObj = {
+        url:req.url,
+        method:req.method,
+        version:req.httpVersion,
+        header:req.headers
+      };
+      var new_req_str = JSON.stringify(reqObj, null, 2);
+      data = data.replace("{{ req }}", new_req_str);
+      var resObj = {
+        statusMessage:res.statusMessage,
+        statusCode:res.statusCode,
+        _header:res._header
+      };
+      var new_res_str = JSON.stringify(resObj, null, 2);
+      data = data.replace("{{ res }}", new_res_str);
       res.writeHead(200,{
         'Content-Type':'text/html'
       });
@@ -29,6 +44,7 @@ var server = http.createServer((req, res)=>{
     }
   });
 });
+
 server.listen(port, hostname, ()=>{
    console.log(`Server is listening at ${hostname}:${port}`);
  });
