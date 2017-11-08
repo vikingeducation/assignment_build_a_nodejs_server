@@ -6,6 +6,7 @@ var hostname = 'localhost';
 var port = 3000;
 
 ////Node server sends back "Hello world!" :) - (this code works!)
+
 // var server = http.createServer((req, res)=>{
 //   res.writeHead(200, {
 //     'Content-Type':'text/plain'
@@ -16,6 +17,8 @@ var port = 3000;
 // server.listen(port, hostname, ()=>{
 //   console.log(`Server is listening at ${hostname}:${port}`);
 // });
+
+//Displaying request and response data
 var server = http.createServer((req, res)=>{
   fs.readFile('./public/index.html', 'utf-8', function(err, data){
     if(err){

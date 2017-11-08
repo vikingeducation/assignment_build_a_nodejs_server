@@ -2,7 +2,16 @@
 <head>
 </head>
 <body>
-  <h1>Node js says hello!</h1>
+  <h1>Node js sends back hello!</h1>
+  <div>
+    <form action="../app.js" method = "get">
+      Username:<br>
+      <input type="text" name="username" placeholder="Enter your full name"><br>
+      Password:<br>
+      <input type="password" name="pwd"><br><br>
+      <input type="submit" value="Submit" id = "Submit">
+    </form>
+  </div>
   <div id = "request">
     <h2>Request:</h2>
     <pre>{{ req }}</pre>
