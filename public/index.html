@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+  <html>
+    <head></head>
+    <body>
+      <h1>This HTML is being served by node</h1>
+      <h2>Request: </h2>
+      <pre> {{ req }} </pre>
+      
+      <h2>Response: </h2>
+      <pre> {{ res }} </pre>
+      <!-- Here follows some extremely lazy markup -->
+      <br>
+      <br>
+      <form action = "/" method = "get">
+        <fieldset>
+          <legend> Name </legend>
+          <input type = "text" name = "Name">
+          <br>
+          <br>
+          <legend> Password </legend>
+          <input type = "password" name = "Password">
+          <br>
+          <br>
+          <input type = "submit" value = "Submit">
+        </fieldset>
+      </form>
+
+    </body>
+  </html>
+
