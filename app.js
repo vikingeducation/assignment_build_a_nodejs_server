@@ -12,7 +12,29 @@ const server = http.createServer((req, res) => {
     } else {
       res.statusCode = 200; 
       res.setHeader('Content-Type', 'text/html');
-      res.end(data);
+
+      const reqObj = {
+        url         : req.url,
+        method      : req.method,
+        httpVersion : req.httpVersion,
+        headers     : req.headers
+      };
+
+      const reqString = JSON.stringify(reqObj, null, 2);
+
+      const resObj = {
+        statusMessage : res.statusMessage,
+        statusCode    : res.statusCode,
+        _header       : res._header
+      };
+
+      const resString = JSON.stringify(resObj, null, 2);
+
+      const newData = data
+        .replace(/{{ req }}/, reqString)
+        .replace(/{{ res }}/, resString);
+
+      res.end(newData);
     }
   });
 });
