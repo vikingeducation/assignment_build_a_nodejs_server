@@ -1,16 +1,10 @@
 
-/*
-  cd Documents/Viking/Node/node_server
-
-  left off at form submission
-*/
-
 const http = require(`http`),
   fs = require(`fs`),
   hostname = `127.0.0.1`,
   port = 3000;
 
-const server = http.createServer((req, res) => {
+let server = http.createServer((req, res) => {
   fs.readFile(`public/index.html`, `utf8`, (err, data) => {
     if (err) {
       res.writeHead(404);
@@ -45,5 +39,3 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-// spacing
