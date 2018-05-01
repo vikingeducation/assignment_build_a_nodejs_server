@@ -1,6 +1,8 @@
 
 /*
   cd Documents/Viking/Node/node_server
+
+  left off at form submission
 */
 
 const http = require(`http`),
