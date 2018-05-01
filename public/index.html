@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {font-family: sans-serif;}
+      h1 {margin-left: 4px;}
+      h2 {margin-left: 12px;}
+      pre {margin: -16px 0px 24px 12px;}
+      form {
+        width: 355px;
+        margin-left: 32px;
+      }
+    </style>
+    <title>My First Node.js Server</title>
+  </head>
+
+  <body>
+
+    <h1>Hello from Node.js Server!</h1>
+
+    <h2>Request:</h2>
+    <pre>{{ req }}</pre>
+
+    <h2>Response:</h2>
+    <pre>{{ res }}</pre>
+
+    <form action="#" method="get">
+      <fieldset>
+        <legend>Login Information:</legend>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <input type="submit" value="Submit">
+      </fieldset>
+    </form>
+
+  </body>
+
+</html>
