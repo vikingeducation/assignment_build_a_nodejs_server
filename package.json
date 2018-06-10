@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/megantaylor/assignment_build_a_nodejs_server/issues"
   },
-  "homepage": "https://github.com/megantaylor/assignment_build_a_nodejs_server#readme"
+  "homepage": "https://github.com/megantaylor/assignment_build_a_nodejs_server#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "lodash": "^4.17.10"
+  }
 }
