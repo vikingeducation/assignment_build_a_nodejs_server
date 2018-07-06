@@ -1,4 +1,5 @@
 var http = require('http');
+var fs = require('fs');
 
 var port = 3000;
 var host = 'localhost';
@@ -12,6 +13,8 @@ var server = http.createServer(function(req, res) {
     } else {
       res.writeHead(200, {
         "Content-Type": "text/html"
+        console.log(String.prototype.replace(req));
+        console.log(JSON.stringify(req.pre));
       });
       res.end(data);
     }
