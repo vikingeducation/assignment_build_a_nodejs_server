@@ -1,10 +1,26 @@
 var http = require("http");
+var fs = require("fs");
+
+var path = "./public/index.html";
 
 var server = http.createServer
 (
 	(req, res) =>
 	{
-		res.end("Hello World!");
+		fs.readFile
+		(
+			path, (err, data) =>
+			{
+				if (err)
+				{
+					res.end("404 file not found");
+				}
+				else
+				{
+					res.end(data);
+				}
+			}
+		)
 	}
 );
 
