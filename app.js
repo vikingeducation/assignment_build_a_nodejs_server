@@ -9,19 +9,23 @@ var server = http.createServer((req, res) => {
 			res.end("404 file not found");
 		} else {
 			res.setHeader("Content-type", "text/html");
-			reqFiltered = {
+			
+			request = {
 				"url": req.url,
 				"method": req.method,
 				"httpVersion": req.httpVersion,
 				"headers": req.headers
 			};
-			resFiltered = {
+			
+			response = {
 				"statusMessage": res.statusMessage,
 				"statusCode": res.statusCode,
 				"_header": res._header
 			};
-			data = data.replace("{{ req }}", JSON.stringify(reqFiltered, null, 2));
-			data = data.replace("{{ res }}", JSON.stringify(resFiltered, null, 2));
+
+			data = data.replace("{{ req }}", JSON.stringify(request, null, 2));
+			data = data.replace("{{ res }}", JSON.stringify(response, null, 2));
+			
 			res.end(data);
 		}
 	});
